@@ -24,6 +24,5 @@ class QuestReport(models.Model):
     QuestStartedAt = models.DateTimeField(auto_now_add=True)
     QuestCompletedAt = models.DateTimeField(auto_now=True)
 
-
     def __int__(self):
         return self.UserId

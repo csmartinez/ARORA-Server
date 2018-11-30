@@ -16,9 +16,18 @@ Including another URLconf
 from django.conf.urls import url, include
 from rest_framework import routers
 from django.contrib import admin
-from QuestContext import views
 
 router = routers.DefaultRouter()
+
+from UserReports import views
+
+router.register(r'UserReports', views.LocationReport)
+router.register(r'UserReports', views.UserInteraction)
+router.register(r'UserReports', views.MoodReport)
+router.register(r'UserReports', views.ThoughtDistortionReport)
+
+from QuestContext import views
+
 router.register(r'QuestContext', views.Quest)
 
 urlpatterns = [
@@ -26,4 +35,5 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^admin/', admin.site.urls),
     url('api/', include('QuestContext.urls')),
+    url('api/', include('UserReports.urls')),
 ]
